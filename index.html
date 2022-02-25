@@ -151,19 +151,27 @@ height: 50px;
             if(start_state && counter === 0){
                 var s = sites[Math.floor(Math.random() * sites.length)];
                 console.log("ites[s", sites, s)
+                counter++
+                try{
                 $.ajax({
                     url: s.url,
                     method: s.method,
-                    error: function () {
+                    success: function () {
                         count_all++;
                         countP.innerText = count_all + "";
-                        counter--;
+                        counter = 0;
                     },
-                    success: function () {
-                        counter--;
+                    error: function (xhr, status, error) {
+                        counter = 0;
+                    },
+                    complete: function () {
+                        counter = 0;
                     },
                     timeout: 3000
                 });
+                }catch(e){
+                    counter =0;
+                }
             }                  
         }, 1000)
         

